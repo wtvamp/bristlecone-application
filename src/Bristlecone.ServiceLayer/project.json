@@ -4,6 +4,7 @@
   "dependencies": {
     "Bristlecone.BizLogicLayer": "1.0.0-0",
     "Bristlecone.DataAccessLayer": "1.0.0-0",
+    "Bristlecone.ViewModels": "1.0.0-*",
     "NETStandard.Library": "1.6.1"
   },
 
