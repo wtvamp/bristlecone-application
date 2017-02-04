@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BristleconeTemplate", "src\BristleconeTemplate\BristleconeTemplate.xproj", "{194FE998-9731-4EA0-A64F-15E9305FD24D}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Bristlecone.DataAccessLayer", "src\BristleconeDataAccessLayer\Bristlecone.DataAccessLayer.xproj", "{1BA90034-8E26-4C0C-8FEF-2655FB8F1298}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{194FE998-9731-4EA0-A64F-15E9305FD24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{194FE998-9731-4EA0-A64F-15E9305FD24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{194FE998-9731-4EA0-A64F-15E9305FD24D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA90034-8E26-4C0C-8FEF-2655FB8F1298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA90034-8E26-4C0C-8FEF-2655FB8F1298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA90034-8E26-4C0C-8FEF-2655FB8F1298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA90034-8E26-4C0C-8FEF-2655FB8F1298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{194FE998-9731-4EA0-A64F-15E9305FD24D} = {96DD292F-6F71-4FD3-B52F-EDFB14F0E7BF}
+		{1BA90034-8E26-4C0C-8FEF-2655FB8F1298} = {96DD292F-6F71-4FD3-B52F-EDFB14F0E7BF}
 	EndGlobalSection
 EndGlobal
