@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0-0",
 
   "dependencies": {
-    "BristleconeDataAccessLayer": "1.0.0-*",
+    "Bristlecone.DataAccessLayer": "1.0.0-0",
     "NETStandard.Library": "1.6.1"
   },
 
