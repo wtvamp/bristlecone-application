@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using AutoMapper;
 using Bristlecone.Service.Common;
 using Bristlecone.DataLayer.Entities;
 using Bristlecone.BusinessLayer.Interfaces;
 using Bristlecone.ViewModels.DTO;
 using Bristlecone.Service.Interfaces;
 using Bristlecone.ServiceLayer.Common;
+using AutoMapper;
 
 namespace IDX.Service.Services
 {
