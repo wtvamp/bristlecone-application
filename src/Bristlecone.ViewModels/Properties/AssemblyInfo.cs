@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Bristlecone.BizLogicLayer")]
+[assembly: AssemblyProduct("Bristlecone.ViewModels")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7590196b-d31a-4d09-a85a-4e142c014eb0")]
+[assembly: Guid("be2874cc-377c-4815-95b5-d86848f2bfbd")]
