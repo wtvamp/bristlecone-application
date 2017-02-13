@@ -12,8 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Bristlecone.DataAccessLayer.Repositories.Interfaces;
 using Bristlecone.BusinessLayer.Interfaces;
 using Bristlecone.BusinessLayer.Concretes;
+using Bristlecone.DataLayer.Common;
 using Bristlecone.DataLayer.EfRepositories;
 using Bristlecone.Service.Interfaces;
+using Bristlecone.ViewModels.DTO;
 using IDX.Service.Services;
 
 namespace Bristlecone.API.Private
@@ -47,6 +49,10 @@ namespace Bristlecone.API.Private
             services.AddScoped<IApplicationService, ApplicationService>();
             services.AddScoped<IApplicationBusinessEntity, ApplicationBusinessEntity>();
             services.AddScoped<IApplicationRepository, ApplicationEfRepository>();
+            services.AddScoped<BaseDbContext, BristleconeDbContext>();
+
+            //todo: You dummy you forgot the concrete here
+            //services.AddScoped<IResponseUtilities<ApplicationDTO>, >
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
         }
 
