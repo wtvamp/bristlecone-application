@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Bristlecone.BizLogicLayer.Concretes;
+using Bristlecone.BizLogicLayer.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Bristlecone.DataAccessLayer;
+using Bristlecone.DataAccessLayer.Common;
+using Bristlecone.DataAccessLayer.Repositories.EfRepositories;
 using Microsoft.EntityFrameworkCore;
 using Bristlecone.DataAccessLayer.Repositories.Interfaces;
-using Bristlecone.BusinessLayer.Interfaces;
-using Bristlecone.BusinessLayer.Concretes;
-using Bristlecone.DataLayer.Common;
-using Bristlecone.DataLayer.EfRepositories;
-using Bristlecone.Service.Interfaces;
+using Bristlecone.ServiceLayer.Common;
+using Bristlecone.ServiceLayer.Interfaces;
+using Bristlecone.ServiceLayer.Services;
 using Bristlecone.ViewModels.DTO;
-using IDX.Service.Services;
 
 namespace Bristlecone.API.Private
 {
@@ -50,9 +47,7 @@ namespace Bristlecone.API.Private
             services.AddScoped<IApplicationBusinessEntity, ApplicationBusinessEntity>();
             services.AddScoped<IApplicationRepository, ApplicationEfRepository>();
             services.AddScoped<BaseDbContext, BristleconeDbContext>();
-
-            //todo: You dummy you forgot the concrete here
-            //services.AddScoped<IResponseUtilities<ApplicationDTO>, >
+            services.AddScoped<IResponseUtilities<ApplicationDTO>, ResponseUtilities<ApplicationDTO>>();
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
         }
 

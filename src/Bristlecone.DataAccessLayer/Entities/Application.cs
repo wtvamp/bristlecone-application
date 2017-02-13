@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Bristlecone.DataLayer.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Bristlecone.DataAccessLayer.Common;
 
-namespace Bristlecone.DataLayer.Entities
+namespace Bristlecone.DataAccessLayer.Entities
 {
     [Table("Application")]
     public class Application : BaseEntity

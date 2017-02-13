@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Bristlecone.DataLayer
+namespace Bristlecone.DataAccessLayer.Interfaces
 {
     public interface IContext
     {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Bristlecone.Service.Interfaces;
 using Bristlecone.ViewModels.DTO;
 using System.Net;
+using Bristlecone.ServiceLayer.Interfaces;
 using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Bristlecone.API.Private.Controllers

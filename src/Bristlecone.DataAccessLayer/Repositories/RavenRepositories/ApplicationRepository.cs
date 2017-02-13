@@ -1,10 +1,9 @@
-﻿using Bristlecone.DataAccessLayer.Repositories.Interfaces;
-using Bristlecone.DataLayer.Common;
-using Bristlecone.DataLayer.Entities;
-using Bristlecone.DataLayer.Interfaces;
+﻿using Bristlecone.DataAccessLayer.Common;
+using Bristlecone.DataAccessLayer.Entities;
+using Bristlecone.DataAccessLayer.Repositories.Interfaces;
 using Raven.Client;
 
-namespace Bristlecone.DataLayer.RavenRepositories
+namespace Bristlecone.DataAccessLayer.Repositories.RavenRepositories
 {
     /// <summary>
     /// Derivative repository for interacting with Bristlecone Application Entities using RavenDb

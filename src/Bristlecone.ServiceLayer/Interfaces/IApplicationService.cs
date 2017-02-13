@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Bristlecone.DataLayer.Entities;
-using BristleCone.ServiceLayer.Common;
-using Bristlecone.ViewModels.DTO;
+using Bristlecone.DataAccessLayer.Entities;
 using Bristlecone.ServiceLayer.Common;
+using Bristlecone.ViewModels.DTO;
+using BristleCone.ServiceLayer.Common;
 
-namespace Bristlecone.Service.Interfaces
+namespace Bristlecone.ServiceLayer.Interfaces
 {
 
     public interface IApplicationService : IEntityService<Application>

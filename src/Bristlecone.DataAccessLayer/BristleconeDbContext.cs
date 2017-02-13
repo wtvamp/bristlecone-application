@@ -1,11 +1,5 @@
-﻿using Bristlecone.DataLayer.Common;
+﻿using Bristlecone.DataAccessLayer.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Bristlecone.DataAccessLayer
 {

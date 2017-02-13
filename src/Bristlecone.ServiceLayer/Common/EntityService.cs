@@ -1,10 +1,10 @@
-﻿using Bristlecone.BusinessLayer.Common;
-using Bristlecone.DataLayer.Common;
-using BristleCone.ServiceLayer.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Bristlecone.BizLogicLayer.Common;
+using Bristlecone.DataAccessLayer.Common;
+using BristleCone.ServiceLayer.Common;
 
-namespace Bristlecone.Service.Common
+namespace Bristlecone.ServiceLayer.Common
 {
     public abstract class EntityService<T> : IEntityService<T> where T : BaseEntity
     {

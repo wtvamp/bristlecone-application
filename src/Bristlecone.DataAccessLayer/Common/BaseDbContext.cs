@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
+﻿using Bristlecone.DataAccessLayer.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace Bristlecone.DataLayer.Common
+namespace Bristlecone.DataAccessLayer.Common
 {
     /// <summary>
     /// BaseDbContext for any Bristlecone Code.

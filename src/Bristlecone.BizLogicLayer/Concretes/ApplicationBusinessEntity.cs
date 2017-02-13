@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Bristlecone.BusinessLayer.Common;
-using Bristlecone.BusinessLayer.Interfaces;
-using Bristlecone.DataLayer.Entities;
+using Bristlecone.BizLogicLayer.Common;
+using Bristlecone.BizLogicLayer.Interfaces;
+using Bristlecone.DataAccessLayer.Entities;
 using Bristlecone.DataAccessLayer.Repositories.Interfaces;
 
-namespace Bristlecone.BusinessLayer.Concretes
+namespace Bristlecone.BizLogicLayer.Concretes
 {
     /// <summary>
     /// Create an Application Business Entity to handle Application Business Logic before saving to the database

@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using Bristlecone.Service.Common;
-using Bristlecone.DataLayer.Entities;
-using Bristlecone.BusinessLayer.Interfaces;
-using Bristlecone.ViewModels.DTO;
-using Bristlecone.Service.Interfaces;
-using Bristlecone.ServiceLayer.Common;
 using AutoMapper;
+using Bristlecone.BizLogicLayer.Interfaces;
+using Bristlecone.DataAccessLayer.Entities;
+using Bristlecone.ServiceLayer.Common;
+using Bristlecone.ServiceLayer.Interfaces;
+using Bristlecone.ViewModels.DTO;
 
-namespace IDX.Service.Services
+namespace Bristlecone.ServiceLayer.Services
 {
     public class ApplicationService : EntityService<Application>, IApplicationService
     {
@@ -20,7 +18,7 @@ namespace IDX.Service.Services
         /// <summary>
         /// Constuctor
         /// </summary>
-        /// <param name="ApplicationBusiness">Required repository from DI Container</param>
+        /// <param name="applicationBusiness">Required repository from DI Container</param>
         /// <param name="responseUtilities">Required object to create standard ResponseDTO objects</param>
         public ApplicationService(IApplicationBusinessEntity applicationBusiness, IResponseUtilities<ApplicationDTO> responseUtilities)
             : base(applicationBusiness)

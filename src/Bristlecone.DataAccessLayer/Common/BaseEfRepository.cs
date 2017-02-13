@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bristlecone.DataLayer.Common;
-using Bristlecone.DataLayer.Interfaces;
+using Bristlecone.DataAccessLayer.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Bristlecone.DataLayer.Common
+namespace Bristlecone.DataAccessLayer.Common
 {
     /// <summary>
     /// Base repository for interacting with Bristlecone Entities using Entity Framework
@@ -50,7 +48,7 @@ namespace Bristlecone.DataLayer.Common
         /// <returns>The entity that has been added to the database.</returns>
         public virtual T Add(T entity)
         {
-            var status = _dbset.Add(entity);
+            _dbset.Add(entity);
             return entity;
         }
 

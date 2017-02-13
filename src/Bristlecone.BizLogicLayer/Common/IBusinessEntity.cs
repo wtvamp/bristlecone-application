@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Bristlecone.BusinessLayer.Common
+namespace Bristlecone.BizLogicLayer.Common
 {
     public interface IBusinessEntity<T>
     {
