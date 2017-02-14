@@ -1,9 +1,5 @@
-﻿using Bristlecone.DataLayer.Entities;
-using Bristlecone.DataLayer.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Bristlecone.DataAccessLayer.Entities;
+using Bristlecone.DataAccessLayer.Interfaces;
 
 namespace Bristlecone.DataAccessLayer.Repositories.Interfaces
 {

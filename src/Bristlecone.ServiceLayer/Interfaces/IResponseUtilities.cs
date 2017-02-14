@@ -1,8 +1,8 @@
-﻿using Bristlecone.ServiceLayer.Common;
-using System;
+﻿using System;
 using System.Dynamic;
+using Bristlecone.ServiceLayer.Common;
 
-namespace Bristlecone.Service.Interfaces
+namespace Bristlecone.ServiceLayer.Interfaces
 {
     public interface IResponseUtilities<T>
     {

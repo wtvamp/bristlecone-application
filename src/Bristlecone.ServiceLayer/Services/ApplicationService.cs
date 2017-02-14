@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Threading.Tasks;
-using Bristlecone.Service.Common;
-using Bristlecone.DataLayer.Entities;
-using Bristlecone.BusinessLayer.Interfaces;
-using Bristlecone.ViewModels.DTO;
-using Bristlecone.Service.Interfaces;
-using Bristlecone.ServiceLayer.Common;
 using AutoMapper;
+using Bristlecone.BizLogicLayer.Interfaces;
+using Bristlecone.DataAccessLayer.Entities;
+using Bristlecone.ServiceLayer.Common;
+using Bristlecone.ServiceLayer.Interfaces;
+using Bristlecone.ViewModels.DTO;
 
-namespace IDX.Service.Services
+namespace Bristlecone.ServiceLayer.Services
 {
     public class ApplicationService : EntityService<Application>, IApplicationService
     {
@@ -20,7 +19,7 @@ namespace IDX.Service.Services
         /// <summary>
         /// Constuctor
         /// </summary>
-        /// <param name="ApplicationBusiness">Required repository from DI Container</param>
+        /// <param name="applicationBusiness">Required repository from DI Container</param>
         /// <param name="responseUtilities">Required object to create standard ResponseDTO objects</param>
         public ApplicationService(IApplicationBusinessEntity applicationBusiness, IResponseUtilities<ApplicationDTO> responseUtilities)
             : base(applicationBusiness)
@@ -37,7 +36,7 @@ namespace IDX.Service.Services
         public async Task<ApplicationDTO> GetApplicationAsync(long id)
         {
             // Fetch our Application
-            var Application = await _applicationBusiness.GetApplicationAsync(id);
+            var Application = _applicationBusiness.FindBy(p => p.ApplicationID == id).FirstOrDefault();
 
             // Map our db entity to our API model
             var ApplicationDto = Mapper.Map<Application, ApplicationDTO>(Application);
@@ -65,6 +64,7 @@ namespace IDX.Service.Services
 
                 // Call the base EntityService Create
                 Create(ApplicationToCreate);
+                _applicationBusiness.Save();
 
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationCreated = await GetApplicationAsync(ApplicationToCreate.ApplicationID);
@@ -88,7 +88,7 @@ namespace IDX.Service.Services
             try
             {
                 // Fetch our Application
-                var existingApplication = await _applicationBusiness.GetApplicationAsync(ApplicationDto.ApplicationID);
+                var existingApplication = _applicationBusiness.FindBy(e => e.ApplicationID == ApplicationDto.ApplicationID).FirstOrDefault();
 
                 if (existingApplication == null)
                     // Application wasn't found, so we won't attempt to update
@@ -99,6 +99,7 @@ namespace IDX.Service.Services
 
                 // Call the base EntityService Update
                 Update(ApplicationToUpdate);
+                _applicationBusiness.Save();
 
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationUpdated = await GetApplicationAsync(ApplicationToUpdate.ApplicationID);

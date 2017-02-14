@@ -1,19 +1,19 @@
-﻿using Bristlecone.DataAccessLayer.Repositories.Interfaces;
-using Bristlecone.DataLayer.Common;
-using Bristlecone.DataLayer.Entities;
+﻿using Bristlecone.DataAccessLayer.Common;
+using Bristlecone.DataAccessLayer.Entities;
+using Bristlecone.DataAccessLayer.Repositories.Interfaces;
 
-namespace Bristlecone.DataLayer.EfRepositories
+namespace Bristlecone.DataAccessLayer.Repositories.EfRepositories
 {
     /// <summary>
     /// Derivative repository for interacting with Bristlecone Application Entities using Entity Framework
     /// </summary>
-    public class ApplicationEfRavenRepository : GenericEfRepository<Application>, IApplicationRepository
+    public class ApplicationEfRepository : GenericEfRepository<Application>, IApplicationRepository
     {
         /// <summary>
         /// Creates a new Entity Framework backed Application Repository
         /// </summary>
         /// <param name="context"></param>
-        public ApplicationEfRavenRepository(BaseDbContext context) : base(context)
+        public ApplicationEfRepository(BaseDbContext context) : base(context)
         {
 
         }

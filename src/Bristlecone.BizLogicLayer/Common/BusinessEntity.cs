@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bristlecone.DataLayer.Common;
-using Bristlecone.DataLayer.Interfaces;
+using Bristlecone.DataAccessLayer.Common;
+using Bristlecone.DataAccessLayer.Interfaces;
 
-namespace Bristlecone.BusinessLayer.Common
+namespace Bristlecone.BizLogicLayer.Common
 {
     public abstract class BusinessEntity<T> : IBusinessEntity<T> where T : BaseEntity
     {
@@ -34,10 +34,20 @@ namespace Bristlecone.BusinessLayer.Common
             return _repository.GetAll();
         }
 
+        public IEnumerable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        {
+            return _repository.FindBy(predicate);
+        }
+
         public void Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
             _repository.Edit(entity);
+        }
+
+        public void Save()
+        {
+            _repository.Save();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Bristlecone.DataLayer.Common
+﻿namespace Bristlecone.DataAccessLayer.Common
 {
     /// <summary>
     /// Base entity from which all Bristlecone Entities inherit

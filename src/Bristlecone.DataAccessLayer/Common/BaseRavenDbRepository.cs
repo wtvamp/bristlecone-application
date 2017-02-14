@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bristlecone.DataAccessLayer.Interfaces;
 using Raven.Client;
-using Bristlecone.DataLayer.Interfaces;
-using Bristlecone.DataLayer.Common;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Bristlecone.DataLayer.Common
+namespace Bristlecone.DataAccessLayer.Common
 {
     /// <summary>
     /// Base repository for interacting with Bristlecone Entities using RavenDB

@@ -1,11 +1,6 @@
-﻿using Bristlecone.DataLayer.Common;
+﻿using Bristlecone.DataAccessLayer.Common;
+using Bristlecone.DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Bristlecone.DataAccessLayer
 {
@@ -17,6 +12,12 @@ namespace Bristlecone.DataAccessLayer
             // Connection string inject in startup cs of calling application
         }
 
+        #region DbSets<T>
         // Bristlecone dbsets, etc. go here
+
+        public virtual DbSet<Application> Applications { get; set; }
+
+        #endregion
+
     }
 }

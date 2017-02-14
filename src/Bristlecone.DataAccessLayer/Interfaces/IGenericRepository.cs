@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Bristlecone.DataLayer.Common;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Bristlecone.DataAccessLayer.Common;
 
-namespace Bristlecone.DataLayer.Interfaces
+namespace Bristlecone.DataAccessLayer.Interfaces
 {
     /// <summary>
     /// Interface that defines how to interact with Bristlecone Entities using the repository pattern
