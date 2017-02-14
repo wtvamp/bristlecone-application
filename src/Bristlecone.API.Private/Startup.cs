@@ -1,4 +1,5 @@
-﻿using Bristlecone.BizLogicLayer.Concretes;
+﻿using AutoMapper;
+using Bristlecone.BizLogicLayer.Concretes;
 using Bristlecone.BizLogicLayer.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,6 +43,7 @@ namespace Bristlecone.API.Private
             );
             // Add framework services.
             services.AddMvc();
+            services.AddAutoMapper();
 
             services.AddScoped<IApplicationService, ApplicationService>();
             services.AddScoped<IApplicationBusinessEntity, ApplicationBusinessEntity>();
@@ -58,6 +60,7 @@ namespace Bristlecone.API.Private
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
+            AutoMapperInitialization.InitializeMappings();
 
             app.UseMvc();
         }

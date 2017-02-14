@@ -31,7 +31,7 @@ namespace Bristlecone.API.Private.Controllers
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> CreateApplicationAsync(ApplicationDTO application)
+        public async Task<IActionResult> CreateApplicationAsync([FromBody] ApplicationDTO application)
         {
             if (!ModelState.IsValid || application == null)
                 return BadRequest("ApplicationDTO");
