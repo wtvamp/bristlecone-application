@@ -8,5 +8,6 @@ namespace Bristlecone.BizLogicLayer.Common
         void Delete(T entity);
         IEnumerable<T> GetAll();
         void Update(T entity);
+        void Save();
     }
 }

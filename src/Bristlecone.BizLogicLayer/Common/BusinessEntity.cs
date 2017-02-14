@@ -39,5 +39,10 @@ namespace Bristlecone.BizLogicLayer.Common
             if (entity == null) throw new ArgumentNullException(nameof(entity));
             _repository.Edit(entity);
         }
+
+        public void Save()
+        {
+            _repository.Save();
+        }
     }
 }

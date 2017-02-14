@@ -61,6 +61,7 @@ namespace Bristlecone.BizLogicLayer.Concretes
 
                 // Call the base EntityService Create
                 Create(Application);
+                Save();
 
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var applicationCreated = await GetApplicationAsync(Application.ApplicationID);
@@ -97,6 +98,7 @@ namespace Bristlecone.BizLogicLayer.Concretes
                 
                 // Call the base EntityService Update
                 Update(Application);
+                Save();
 
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationUpdated = await GetApplicationAsync(Application.ApplicationID);

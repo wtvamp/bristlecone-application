@@ -48,7 +48,7 @@ namespace Bristlecone.API.Private
             services.AddScoped<IApplicationService, ApplicationService>();
             services.AddScoped<IApplicationBusinessEntity, ApplicationBusinessEntity>();
             services.AddScoped<IApplicationRepository, ApplicationEfRepository>();
-            services.AddScoped<BaseDbContext, BristleconeDbContext>();
+            services.AddSingleton<BaseDbContext, BristleconeDbContext>();
             services.AddScoped<IResponseUtilities<ApplicationDTO>, ResponseUtilities<ApplicationDTO>>();
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
         }
