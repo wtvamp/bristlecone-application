@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Bristlecone.BizLogicLayer.Interfaces;
@@ -35,7 +36,7 @@ namespace Bristlecone.ServiceLayer.Services
         public async Task<ApplicationDTO> GetApplicationAsync(long id)
         {
             // Fetch our Application
-            var Application = await _applicationBusiness.GetApplicationAsync(id);
+            var Application = _applicationBusiness.FindBy(p => p.ApplicationID == id).FirstOrDefault();
 
             // Map our db entity to our API model
             var ApplicationDto = Mapper.Map<Application, ApplicationDTO>(Application);
@@ -63,6 +64,7 @@ namespace Bristlecone.ServiceLayer.Services
 
                 // Call the base EntityService Create
                 Create(ApplicationToCreate);
+                _applicationBusiness.Save();
 
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationCreated = await GetApplicationAsync(ApplicationToCreate.ApplicationID);
@@ -86,7 +88,7 @@ namespace Bristlecone.ServiceLayer.Services
             try
             {
                 // Fetch our Application
-                var existingApplication = await _applicationBusiness.GetApplicationAsync(ApplicationDto.ApplicationID);
+                var existingApplication = _applicationBusiness.FindBy(e => e.ApplicationID == ApplicationDto.ApplicationID).FirstOrDefault();
 
                 if (existingApplication == null)
                     // Application wasn't found, so we won't attempt to update
@@ -97,6 +99,7 @@ namespace Bristlecone.ServiceLayer.Services
 
                 // Call the base EntityService Update
                 Update(ApplicationToUpdate);
+                _applicationBusiness.Save();
 
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationUpdated = await GetApplicationAsync(ApplicationToUpdate.ApplicationID);

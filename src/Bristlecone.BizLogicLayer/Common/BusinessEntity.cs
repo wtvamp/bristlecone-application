@@ -34,6 +34,11 @@ namespace Bristlecone.BizLogicLayer.Common
             return _repository.GetAll();
         }
 
+        public IEnumerable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        {
+            return _repository.FindBy(predicate);
+        }
+
         public void Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
