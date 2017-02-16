@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Bristlecone.BizLogicLayer.Common;
+﻿using Bristlecone.BizLogicLayer.Common;
 using Bristlecone.DataAccessLayer.Entities;
 
 namespace Bristlecone.BizLogicLayer.Interfaces
