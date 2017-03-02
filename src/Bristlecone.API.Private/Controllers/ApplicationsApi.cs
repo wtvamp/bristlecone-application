@@ -15,6 +15,9 @@ using Swashbuckle.SwaggerGen.Annotations;
 using Bristlecone.ViewModels.DTO;
 using Bristlecone.ServiceLayer.Interfaces;
 using System.Threading.Tasks;
+using AutoMapper;
+using System.Net;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace IO.Swagger.Controllers
 {
@@ -63,14 +66,19 @@ namespace IO.Swagger.Controllers
         [Route("/v1/application")]
         [SwaggerOperation("ApplicationPost")]
         [ProducesResponseType(typeof(ApplicationDTO), 200)]
-        public virtual IActionResult ApplicationPost([FromBody]NewApplicationDTO body)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<ApplicationDTO>(exampleJson)
-            : default(ApplicationDTO);
-            return new ObjectResult(example);
+        public async Task<IActionResult> ApplicationPost([FromBody]NewApplicationDTO newApplicationDTO)
+        {
+            if (!ModelState.IsValid || newApplicationDTO == null)
+                return BadRequest("NewApplicationDTO");
+
+            var applicationDto = Mapper.Map<NewApplicationDTO, ApplicationDTO>(newApplicationDTO);
+
+            var response = await _applicationService.CreateApplicationAsync(applicationDto);
+
+            if (response.ReturnObject != null && response.StatusCode == HttpStatusCode.Created)
+                return Created($"{Request.GetDisplayUrl()}/{response.Id}", response);
+
+            return BadRequest(response.Message);
         }
 
 
@@ -85,14 +93,21 @@ namespace IO.Swagger.Controllers
         [Route("/v1/application")]
         [SwaggerOperation("ApplicationPut")]
         [ProducesResponseType(typeof(ApplicationDTO), 200)]
-        public virtual IActionResult ApplicationPut([FromBody]ApplicationDTO application)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<ApplicationDTO>(exampleJson)
-            : default(ApplicationDTO);
-            return new ObjectResult(example);
+        public async Task<IActionResult> ApplicationPut([FromBody]ApplicationDTO application)
+        {
+            if (!ModelState.IsValid || application == null)
+                return BadRequest("ApplicationDTO");
+
+
+            var response = await _applicationService.UpdateApplicationAsync(application);
+
+            if (response.ReturnObject != null && response.StatusCode == HttpStatusCode.OK)
+                return Ok(response.ReturnObject);
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+                return NotFound();
+
+            return BadRequest(response.Message);
         }
     }
 }
