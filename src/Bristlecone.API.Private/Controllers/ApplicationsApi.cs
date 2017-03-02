@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Swashbuckle.SwaggerGen.Annotations;
 using Bristlecone.ViewModels.DTO;
+using Bristlecone.ServiceLayer.Interfaces;
+using System.Threading.Tasks;
 
 namespace IO.Swagger.Controllers
 {
@@ -20,7 +22,13 @@ namespace IO.Swagger.Controllers
     /// 
     /// </summary>
     public class ApplicationsApiController : Controller
-    { 
+    {
+        private readonly IApplicationService _applicationService;
+
+        public ApplicationsApiController(IApplicationService applicationService)
+        {
+            _applicationService = applicationService;
+        }
 
         /// <summary>
         /// Applications assocaited with the API consumer
@@ -33,14 +41,14 @@ namespace IO.Swagger.Controllers
         [Route("/v1/application")]
         [SwaggerOperation("ApplicationGet")]
         [ProducesResponseType(typeof(ApplicationDTO), 200)]
-        public virtual IActionResult ApplicationGet([FromQuery]List<string> ids)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<ApplicationDTO>>(exampleJson)
-            : default(List<ApplicationDTO>);
-            return new ObjectResult(example);
+        public async Task<IActionResult> ApplicationGet([FromQuery]List<string> ids)
+        {
+            var response = await _applicationService.GetApplicationsAsync(ids);
+
+            if (response == null)
+                return NotFound();
+
+            return Ok(response);
         }
 
 

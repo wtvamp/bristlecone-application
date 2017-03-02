@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Bristlecone.DataAccessLayer.Entities;
 using Bristlecone.ViewModels.DTO;
+using System.Collections.Generic;
 
 namespace Bristlecone.ServiceLayer.Common
 {
@@ -12,6 +13,7 @@ namespace Bristlecone.ServiceLayer.Common
             {
                 cfg.CreateMap<Application, ApplicationDTO>();
                 cfg.CreateMap<ApplicationDTO, Application>();
+                cfg.CreateMap<List<Application>, List<ApplicationDTO>>();
             });
         }
     }

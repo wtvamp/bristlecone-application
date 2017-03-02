@@ -7,6 +7,7 @@ using Bristlecone.DataAccessLayer.Entities;
 using Bristlecone.ServiceLayer.Common;
 using Bristlecone.ServiceLayer.Interfaces;
 using Bristlecone.ViewModels.DTO;
+using System.Collections.Generic;
 
 namespace Bristlecone.ServiceLayer.Services
 {
@@ -26,6 +27,22 @@ namespace Bristlecone.ServiceLayer.Services
         {
             _applicationBusiness = applicationBusiness;
             _responseUtilities = responseUtilities;
+        }
+
+        /// <summary>
+        /// Fetches a Application record, constructs a ApplicationDTO and passes it back in the response
+        /// </summary>
+        /// <param name="id">The ApplicationId</param>
+        /// <returns>ApplicationDTO</returns>
+        public async Task<List<ApplicationDTO>> GetApplicationsAsync(List<string> ids)
+        {
+            // Fetch our Application
+            var Applications = _applicationBusiness.FindBy(d => ids.Contains(d.ApplicationID)).ToList();
+
+            // Map our db entity to our API model
+            var ApplicationDtos = Mapper.Map<List<Application>, List<ApplicationDTO>>(Applications);
+
+            return await Task.FromResult(ApplicationDtos);
         }
 
         /// <summary>
