@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Bristlecone.ViewModels.DTO
 {
@@ -10,7 +13,7 @@ namespace Bristlecone.ViewModels.DTO
     public partial class ApplicationDTO : IEquatable<ApplicationDTO>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Application" /> class.
+        /// Initializes a new instance of the <see cref="ApplicationDTO" /> class.
         /// </summary>
         /// <param name="Id">Unique identifier for the application (required).</param>
         /// <param name="ApplicantId">Unique identifier for the applicant user (required).</param>
@@ -25,7 +28,7 @@ namespace Bristlecone.ViewModels.DTO
         /// <param name="FraudStatus">enum identifier for if the application is fraudulent.</param>
         /// <param name="CreatedBy">enum identifier for if the application is created by the applicant/retailer/admin.</param>
         /// <param name="ExpirationDate">Date at which the application will expire and no longer be usable.</param>
-        public Application(string Id = null, string ApplicantId = null, string RetailerId = null, string CreatorId = null, string RiskViewId = null, string FlexId = null, string FraudPointId = null, string CreditScoreId = null, string Status = null, decimal? MonthlyIncome = null, decimal? FraudStatus = null, decimal? CreatedBy = null, string ExpirationDate = null)
+        public ApplicationDTO(string Id = null, string ApplicantId = null, string RetailerId = null, string CreatorId = null, string RiskViewId = null, string FlexId = null, string FraudPointId = null, string CreditScoreId = null, string Status = null, decimal? MonthlyIncome = null, decimal? FraudStatus = null, decimal? CreatedBy = null, string ExpirationDate = null)
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -211,7 +214,7 @@ namespace Bristlecone.ViewModels.DTO
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((Application)obj);
+            return Equals((ApplicationDTO)obj);
         }
 
         /// <summary>
@@ -219,7 +222,7 @@ namespace Bristlecone.ViewModels.DTO
         /// </summary>
         /// <param name="other">Instance of Application to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Application other)
+        public bool Equals(ApplicationDTO other)
         {
 
             if (ReferenceEquals(null, other)) return false;
@@ -336,12 +339,12 @@ namespace Bristlecone.ViewModels.DTO
 
         #region Operators
 
-        public static bool operator ==(Application left, Application right)
+        public static bool operator ==(ApplicationDTO left, ApplicationDTO right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Application left, Application right)
+        public static bool operator !=(ApplicationDTO left, ApplicationDTO right)
         {
             return !Equals(left, right);
         }
