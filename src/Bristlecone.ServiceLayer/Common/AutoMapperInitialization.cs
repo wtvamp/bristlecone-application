@@ -14,6 +14,9 @@ namespace Bristlecone.ServiceLayer.Common
                 cfg.CreateMap<Application, ApplicationDTO>();
                 cfg.CreateMap<ApplicationDTO, Application>();
                 cfg.CreateMap<List<Application>, List<ApplicationDTO>>();
+                cfg.CreateMap<List<ApplicationDTO>, List<Application>>();
+                cfg.CreateMap<NewApplicationDTO, ApplicationDTO>();
+                cfg.CreateMap<ApplicationDTO, NewApplicationDTO>();
             });
         }
     }
