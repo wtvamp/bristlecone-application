@@ -33,7 +33,7 @@ namespace Bristlecone.ServiceLayer.Services
         /// </summary>
         /// <param name="id">The ApplicationId</param>
         /// <returns>ApplicationDTO</returns>
-        public async Task<ApplicationDTO> GetApplicationAsync(long id)
+        public async Task<ApplicationDTO> GetApplicationAsync(string id)
         {
             // Fetch our Application
             var Application = _applicationBusiness.FindBy(p => p.ApplicationID == id).FirstOrDefault();
@@ -54,7 +54,7 @@ namespace Bristlecone.ServiceLayer.Services
         {
             try
             {
-                var existingApplication = GetApplicationAsync(ApplicationDto.ApplicationID).Result;
+                var existingApplication = GetApplicationAsync(ApplicationDto.Id).Result;
                 if (existingApplication != null)
                     // This Application already exists, we're not adding it again.
                     return await Task.FromResult(_responseUtilities.GetDuplicateEntityResponseDto(ApplicationDto));
@@ -69,7 +69,7 @@ namespace Bristlecone.ServiceLayer.Services
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationCreated = await GetApplicationAsync(ApplicationToCreate.ApplicationID);
 
-                return await Task.FromResult(_responseUtilities.GetCreatedResponseDto(ApplicationCreated, ApplicationCreated.ApplicationID));
+                return await Task.FromResult(_responseUtilities.GetCreatedResponseDto(ApplicationCreated, ApplicationCreated.Id));
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace Bristlecone.ServiceLayer.Services
             try
             {
                 // Fetch our Application
-                var existingApplication = _applicationBusiness.FindBy(e => e.ApplicationID == ApplicationDto.ApplicationID).FirstOrDefault();
+                var existingApplication = _applicationBusiness.FindBy(e => e.ApplicationID == ApplicationDto.Id).FirstOrDefault();
 
                 if (existingApplication == null)
                     // Application wasn't found, so we won't attempt to update

@@ -6,7 +6,7 @@ namespace Bristlecone.DataAccessLayer.Entities
     [Table("Application")]
     public class Application : BaseEntity
     {
-        public int ApplicationID { get; set; }
+        public string ApplicationID { get; set; }
 
         public string ApplicationName { get; set; }
          

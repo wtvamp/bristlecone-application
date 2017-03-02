@@ -9,7 +9,7 @@ namespace Bristlecone.ServiceLayer.Interfaces
 
     public interface IApplicationService : IEntityService<Application>
     {
-        Task<ApplicationDTO> GetApplicationAsync(long id);
+        Task<ApplicationDTO> GetApplicationAsync(string id);
 
         Task<ResponseDTO> CreateApplicationAsync(ApplicationDTO applicationDto);
 
