@@ -13,7 +13,7 @@ namespace Bristlecone.ServiceLayer.Common
         /// <param name="createdObject">The object created</param>
         /// <param name="id">The id of the created object</param>
         /// <returns></returns>
-        public ResponseDTO GetCreatedResponseDto(T createdObject, int id)
+        public ResponseDTO GetCreatedResponseDto(T createdObject, string id)
         {
             return new ResponseDTO()
             {

@@ -7,6 +7,7 @@ using Bristlecone.DataAccessLayer.Entities;
 using Bristlecone.ServiceLayer.Common;
 using Bristlecone.ServiceLayer.Interfaces;
 using Bristlecone.ViewModels.DTO;
+using System.Collections.Generic;
 
 namespace Bristlecone.ServiceLayer.Services
 {
@@ -33,7 +34,23 @@ namespace Bristlecone.ServiceLayer.Services
         /// </summary>
         /// <param name="id">The ApplicationId</param>
         /// <returns>ApplicationDTO</returns>
-        public async Task<ApplicationDTO> GetApplicationAsync(long id)
+        public async Task<List<ApplicationDTO>> GetApplicationsAsync(List<string> ids)
+        {
+            // Fetch our Application
+            var Applications = _applicationBusiness.FindBy(d => ids.Contains(d.ApplicationID)).ToList();
+
+            // Map our db entity to our API model
+            var ApplicationDtos = Mapper.Map<List<Application>, List<ApplicationDTO>>(Applications);
+
+            return await Task.FromResult(ApplicationDtos);
+        }
+
+        /// <summary>
+        /// Fetches a Application record, constructs a ApplicationDTO and passes it back in the response
+        /// </summary>
+        /// <param name="id">The ApplicationId</param>
+        /// <returns>ApplicationDTO</returns>
+        public async Task<ApplicationDTO> GetApplicationAsync(string id)
         {
             // Fetch our Application
             var Application = _applicationBusiness.FindBy(p => p.ApplicationID == id).FirstOrDefault();
@@ -54,7 +71,7 @@ namespace Bristlecone.ServiceLayer.Services
         {
             try
             {
-                var existingApplication = GetApplicationAsync(ApplicationDto.ApplicationID).Result;
+                var existingApplication = GetApplicationAsync(ApplicationDto.Id).Result;
                 if (existingApplication != null)
                     // This Application already exists, we're not adding it again.
                     return await Task.FromResult(_responseUtilities.GetDuplicateEntityResponseDto(ApplicationDto));
@@ -69,7 +86,7 @@ namespace Bristlecone.ServiceLayer.Services
                 // Fetch the newly created object so we can pass it back with the ResponseDTO
                 var ApplicationCreated = await GetApplicationAsync(ApplicationToCreate.ApplicationID);
 
-                return await Task.FromResult(_responseUtilities.GetCreatedResponseDto(ApplicationCreated, ApplicationCreated.ApplicationID));
+                return await Task.FromResult(_responseUtilities.GetCreatedResponseDto(ApplicationCreated, ApplicationCreated.Id));
             }
             catch (Exception ex)
             {
@@ -88,7 +105,7 @@ namespace Bristlecone.ServiceLayer.Services
             try
             {
                 // Fetch our Application
-                var existingApplication = _applicationBusiness.FindBy(e => e.ApplicationID == ApplicationDto.ApplicationID).FirstOrDefault();
+                var existingApplication = _applicationBusiness.FindBy(e => e.ApplicationID == ApplicationDto.Id).FirstOrDefault();
 
                 if (existingApplication == null)
                     // Application wasn't found, so we won't attempt to update

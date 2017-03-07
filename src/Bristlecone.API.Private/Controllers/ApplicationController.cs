@@ -18,8 +18,8 @@ namespace Bristlecone.API.Private.Controllers
         }
 
         [HttpGet]
-        [Route("{id:long}")]
-        public async Task<IActionResult> GetApplicationAsync(long id)
+        [Route("{id:string}")]
+        public async Task<IActionResult> GetApplicationAsync(string id)
         {
             var response = await _applicationService.GetApplicationAsync(id);
 
@@ -46,12 +46,12 @@ namespace Bristlecone.API.Private.Controllers
 
         [HttpPut]
         [Route("{id:long}")]
-        public async Task<IActionResult> UpdateApplicationAsync(long id, ApplicationDTO application)
+        public async Task<IActionResult> UpdateApplicationAsync(string id, ApplicationDTO application)
         {
             if (!ModelState.IsValid || application == null)
                 return BadRequest("ApplicationDTO");
 
-            if (id != application.ApplicationID)
+            if (id != application.Id)
                 return BadRequest();
 
 

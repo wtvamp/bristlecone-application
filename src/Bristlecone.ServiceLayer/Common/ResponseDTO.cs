@@ -1,10 +1,11 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 
 namespace Bristlecone.ServiceLayer.Common
 {
     public class ResponseDTO
     {
-        public int? Id;
+        public string Id;
         public HttpStatusCode StatusCode;
         public string Message;
         public object ReturnObject;

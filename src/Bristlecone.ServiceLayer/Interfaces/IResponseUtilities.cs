@@ -6,7 +6,7 @@ namespace Bristlecone.ServiceLayer.Interfaces
 {
     public interface IResponseUtilities<T>
     {
-        ResponseDTO GetCreatedResponseDto(T createdObject, int id);
+        ResponseDTO GetCreatedResponseDto(T createdObject, string id);
         ResponseDTO GetUpdatedResponseDto(T updatedObject);
         ResponseDTO GetExceptionResponseDto(Exception ex, string message);
         ResponseDTO GetExceptionResponseDto(Exception ex, T failedObject);
